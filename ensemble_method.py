@@ -33,14 +33,14 @@ tokenizer = AutoTokenizer.from_pretrained(textmodel)
 #Load GAT model trained 
 model1 = ModelGAT(model_name=textmodel, num_node_features=300, nout=768, nhid=300, graph_hidden_channels=300)
 model1.to(device)
-save_path = os.path.join('./', 'modeltextbaseGAT'+'.pt')
+save_path = os.path.join('./', 'GATbasemodel'+'.pt')
 checkpoint = torch.load(save_path)
 model1.load_state_dict(checkpoint['model_state_dict'])
 
-#Load Baseline model trained
+#Load GAT model trained with negative mining
 model2 = Model_baseline(model_name=textmodel, num_node_features=300,ninp=768, nout=768, nhid=300, graph_hidden_channels=300) # nout = bert model hidden dim
 model2.to(device)
-save_path = os.path.join('./', 'modelbaseline'+'.pt')
+save_path = os.path.join('./', 'modelminingGAT'+'.pt')
 checkpoint = torch.load(save_path)
 model2.load_state_dict(checkpoint['model_state_dict'])
 
@@ -85,6 +85,8 @@ text_embeddings, graph_embeddings = get_embeddings(model2,  test_loader, test_te
 
 all_text_embeddings.append(text_embeddings)
 all_graph_embeddings.append(graph_embeddings)
+
+
 # Ensemble method: Calculate cosine similarity between text and graph embeddings
 ensemble_similarity = np.zeros((len(test_text_loader.dataset), len(test_loader.dataset)))
 

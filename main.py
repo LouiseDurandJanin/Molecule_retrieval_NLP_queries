@@ -64,7 +64,7 @@ elif MODEL =='GATbase':
     model.to(device)
     ### Uncomment to load previously saved model
 
-    #save_path = os.path.join('./', 'GATmodel.pt')
+    #save_path = os.path.join('./', f'{MODEL}model.pt')
     #checkpoint = torch.load(save_path)
     #model.load_state_dict(checkpoint['model_state_dict'])
 
@@ -95,7 +95,7 @@ elif MODEL =='GATScibert':
     model.to(device)
     ### Uncomment to load previously saved model
 
-    #save_path = os.path.join('./', 'modelScibert'+'.pt')
+    #save_path = os.path.join('./', f'{MODEL}model.pt')
     #checkpoint = torch.load(save_path)
     #model.load_state_dict(checkpoint['model_state_dict'])
 
@@ -169,7 +169,7 @@ for i in range(nb_epochs):
     print('-----EPOCH'+str(i+1)+'----- done.  Validation loss: ', str(val_loss/len(val_loader)) )
     if best_validation_loss==val_loss:
         print('validation loss improoved saving checkpoint...')
-        save_path = os.path.join('./', 'modelneghard.pt')
+        save_path = os.path.join('./', f'{MODEL}model.pt')
         torch.save({
         'epoch': i,
         'model_state_dict': model.state_dict(),
