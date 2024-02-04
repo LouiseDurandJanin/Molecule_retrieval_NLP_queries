@@ -24,6 +24,6 @@
 ├── main_negativemining.py <- Script to train our GAT model using 
 │                             negative mining
 │ 
-├── ensemble_method.py     <- Compute the mean over cosine similarity of different models
+├── ensemble_method.py     <- Ensemble method that computes the mean over cosine similarity of different models
 
 ```
