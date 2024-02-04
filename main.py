@@ -1,7 +1,7 @@
 from dataloader import GraphTextDataset, GraphDataset, TextDataset
 from torch_geometric.data import DataLoader
 from torch.utils.data import DataLoader as TorchDataLoader
-from Model import Model_baseline, ModelGAT, MLPModel, ModelGATv2
+from Model import Model_baseline, ModelGAT, ModelGATv2
 import numpy as np
 from transformers import AutoTokenizer
 import torch
@@ -64,7 +64,7 @@ elif MODEL =='GATbase':
     model.to(device)
     ### Uncomment to load previously saved model
 
-    #save_path = os.path.join('./', 'model2'+'.pt')
+    #save_path = os.path.join('./', 'GATmodel.pt')
     #checkpoint = torch.load(save_path)
     #model.load_state_dict(checkpoint['model_state_dict'])
 
