@@ -2,8 +2,9 @@
 
 ## Repository linked to the Kaggle Data Challenge on Molecule Retrieval using Natural Language Queries 
 ## Altegrad class, MVA, ENS Paris-Saclay
-│
-├── dataloader.py      <- Script to load the graphs and NLP queries
+
+```
+├── dataloader.py       <- Script to load the graphs and NLP queries
 │
 ├── Model.py           <- Script that instantiate the models used
 │
@@ -13,11 +14,11 @@
 │
 ├── predictions.py     <- Script to make predictions using the model added in argument
 │
-├── labels.py          <- 
+├── labels.py          <- Scrip to get the batch's labels associated with each embedding
 │   
-│   ├── data           <- Scripts to download or generate data
-│   │   └── make_dataset.py
-│   │
+├── main_negativemining.py <- Script to train a model using negative mining 
+
+
 │   ├── features       <- Scripts to turn raw data into features for modeling
 │   │   └── build_features.py
 │   │
@@ -28,4 +29,4 @@
 │   │
 │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
 │       └── visualize.py
-
+```
