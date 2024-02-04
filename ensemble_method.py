@@ -37,6 +37,7 @@ save_path = os.path.join('./', 'GATbasemodel'+'.pt')
 checkpoint = torch.load(save_path)
 model1.load_state_dict(checkpoint['model_state_dict'])
 
+
 #Load GAT model trained with negative mining
 model2 = Model_baseline(model_name=textmodel, num_node_features=300,ninp=768, nout=768, nhid=300, graph_hidden_channels=300) # nout = bert model hidden dim
 model2.to(device)
