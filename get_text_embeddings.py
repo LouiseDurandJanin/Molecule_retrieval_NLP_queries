@@ -1,16 +1,11 @@
-from Model import Model
+from Model import ModelGAT
 import numpy as np
 from transformers import AutoTokenizer
-from dataloader import GraphTextDataset, GraphDataset, TextDataset
+from dataloader import GraphTextDataset
 import torch
 from torch_geometric.data import DataLoader
-from sklearn.cluster import MiniBatchKMeans, KMeans
 from tqdm import tqdm
 
-#escription = pd.read_csv('./data/train.tsv', sep='\t', header=None)
-#description = description.set_index(0).to_dict()
-
-#cids = list(description[1].keys())
 
 model_name = 'distilbert-base-uncased'
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -20,7 +15,7 @@ train_dataset = GraphTextDataset(root='./data/', gt=gt, split='train', tokenizer
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-model = Model(model_name=model_name, num_node_features=300, nout=768, nhid=300, graph_hidden_channels=300) # nout = bert model hidden dim
+model = ModelGAT(model_name=model_name, num_node_features=300, nout=768, nhid=300, graph_hidden_channels=300) # nout = bert model hidden dim
 model.to(device)
 save_path = '/home/elsaazoulay/Public/basemodel.pt'
 checkpoint = torch.load(save_path)
